@@ -32,13 +32,11 @@ class Musical
      */
     public function getSong($sound = null)
     {
-        if (array_key_exists($sound, $this->sounds)) {
-            $reproduction = [];
-            $reproduction[] = ($sound = $this->sounds[$sound]);
-
-            return array_merge($reproduction, $this->getSong($sound));
+        if (!array_key_exists($sound, $this->sounds)) {
+            return [];
         }
 
-        return [];
+        $sound = $this->sounds[$sound];
+        return array_merge([$sound], $this->getSong($sound));
     }
 }
