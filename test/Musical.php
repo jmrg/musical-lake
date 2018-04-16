@@ -19,8 +19,7 @@ class Musical extends TestCase
      */
     public function testWhenGivenBrrItShouldReturnFiuCricCricBrrah()
     {
-        $Musical = new MusicalModule();
-        $sounds = $Musical->getSong('brr');
+        $sounds = MusicalModule::sing('brr');
 
         $this->assertEquals(['fiu', 'cric-cric', 'brrah'], $sounds);
     }
@@ -33,8 +32,7 @@ class Musical extends TestCase
      */
     public function testWhenGivenBiripItShouldReturnTrriTrriCroac()
     {
-        $Musical = new MusicalModule();
-        $sounds = $Musical->getSong('birip');
+        $sounds = MusicalModule::sing('birip');
 
         $this->assertEquals(['trri-trri', 'croac'], $sounds);
     }
@@ -47,8 +45,7 @@ class Musical extends TestCase
      */
     public function testWhenGivenPlopItShouldReturnCricCricBrrah()
     {
-        $Musical = new MusicalModule();
-        $sounds = $Musical->getSong('plop');
+        $sounds = MusicalModule::sing('plop');
 
         $this->assertEquals(['cric-cric', 'brrah'], $sounds);
     }
@@ -61,12 +58,10 @@ class Musical extends TestCase
      */
     public function testWhenGivenCroacOrBrrahItShouldReturnAnything()
     {
-        $Musical = new MusicalModule();
-
-        $sounds = $Musical->getSong('croac');
+        $sounds = MusicalModule::sing('croac');
         $this->assertEquals([], $sounds);
 
-        $sounds = $Musical->getSong('brrah');
+        $sounds = MusicalModule::sing('brrah');
         $this->assertEquals([], $sounds);
     }
 
@@ -76,12 +71,10 @@ class Musical extends TestCase
      */
     public function testWhenGivenAnythingOrSomethingItShouldReturnNothing()
     {
-        $Musical = new MusicalModule();
-
-        $sounds = $Musical->getSong();
+        $sounds = MusicalModule::sing();
         $this->assertEquals([], $sounds);
 
-        $sounds = $Musical->getSong('something');
+        $sounds = MusicalModule::sing('something');
         $this->assertEquals([], $sounds);
     }
 }

@@ -30,7 +30,7 @@ class Musical
      * @param null $sound <Initial Sound>
      * @return array <Remaining sounds>
      */
-    public function getSong($sound = null)
+    private function getSong($sound = null)
     {
         if (!array_key_exists($sound, $this->sounds)) {
             return [];
@@ -38,5 +38,16 @@ class Musical
 
         $sound = $this->sounds[$sound];
         return array_merge([$sound], $this->getSong($sound));
+    }
+
+    /**
+     * Return a remaining of a song.
+     *
+     * @param null $sound <Initial Sound>
+     * @return array <Remaining sounds>
+     */
+    public static function sing($sound = null)
+    {
+        return (new static())->getSong($sound);
     }
 }
