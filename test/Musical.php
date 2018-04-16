@@ -53,8 +53,6 @@ class Musical extends TestCase
         $this->assertEquals(['cric-cric', 'brrah'], $sounds);
     }
 
-
-
     /**
      * Song: pep, birip, trri-trri, croac.
      *
@@ -69,6 +67,21 @@ class Musical extends TestCase
         $this->assertEquals([], $sounds);
 
         $sounds = $Musical->getSong('brrah');
+        $this->assertEquals([], $sounds);
+    }
+
+    /**
+     * When given anything or something that there isn't
+     * it should reproduce nothing.
+     */
+    public function testWhenGivenAnythingOrSomethingItShouldReturnNothing()
+    {
+        $Musical = new MusicalModule();
+
+        $sounds = $Musical->getSong();
+        $this->assertEquals([], $sounds);
+
+        $sounds = $Musical->getSong('something');
         $this->assertEquals([], $sounds);
     }
 }
